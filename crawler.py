@@ -77,7 +77,7 @@ def login(driver, recipient_id):
         
         return driver, recipient_id, usr, pwd
     except KeyboardInterrupt:
-        driver.quit()
+        driver.close()
         pass
     except:
         send(recipient_id, 'Đăng nhập bị lỗi (sai email hoặc mật khẩu), vui lòng đăng ký lại')
@@ -155,9 +155,9 @@ def task(driver, recipient_id, usr, pwd):
                 traceback.print_exc()
                 pass
             timer.sleep(60)
-        driver.quit()
+        driver.close()
     except KeyboardInterrupt:
-        driver.quit()
+        driver.close()
 
 def get_current_time(datetime_now):
     time = datetime.now().strftime("%H:%M %d/%m/%Y")
