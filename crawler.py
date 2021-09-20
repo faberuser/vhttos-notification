@@ -78,7 +78,7 @@ def login(driver, recipient_id):
         return driver, recipient_id, usr, pwd
     except KeyboardInterrupt:
         driver.close()
-        pass
+        return
     except:
         send(recipient_id, 'Đăng nhập bị lỗi (sai email hoặc mật khẩu), vui lòng đăng ký lại')
         return
@@ -88,7 +88,15 @@ def task(driver, recipient_id, usr, pwd):
     logging.info(text)
     text = ('broke task for user '+recipient_id)
     try:
+        refresh_count = 0
         while True:
+            if refresh_count == 300:
+                driver.refresh()
+                timer.sleep(10)
+                WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.CSS_SELECTOR, '.foreach-temp')))
+                WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.CSS_SELECTOR, '.vht-badge-chip')))
+                WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.CSS_SELECTOR, '.riglist .row-implement')))
+                refresh_count = 0
             try:
                 with open('./users.json', encoding="utf-8") as j:
                     data = json.load(j)[recipient_id]
@@ -155,6 +163,7 @@ def task(driver, recipient_id, usr, pwd):
                 traceback.print_exc()
                 pass
             timer.sleep(60)
+            refresh_count += 60
         driver.close()
     except KeyboardInterrupt:
         driver.close()
