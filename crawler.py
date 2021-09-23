@@ -131,7 +131,7 @@ def task(driver, recipient_id, usr, pwd):
                     if down == True:
                         ele_source = element.get_attribute('innerHTML')
                         miner_ = BeautifulSoup(str(ele_source), 'html.parser').find('span', {'class': 'vht-badge-chip rig-name nv-row'})
-                        if miner is None:
+                        if miner_ is None:
                             miner_ = BeautifulSoup(str(ele_source), 'html.parser').find('span', {'class': 'vht-badge-chip rig-name rx-row'})
                         miner = miner_.get_text()
                         time = get_current_time(datetime.now())
@@ -154,9 +154,9 @@ def task(driver, recipient_id, usr, pwd):
                         if int(temp) >= int(max_temp):
                             overheat.append(temp)
                     if overheat != []:
-                        miner_ = BeautifulSoup(str(ele_source), 'html.parser').find('span', {'class': 'vht-badge-chip rig-name nv-row'})
-                        if miner is None:
-                            miner_ = BeautifulSoup(str(ele_source), 'html.parser').find('span', {'class': 'vht-badge-chip rig-name rx-row'})
+                        miner_ = BeautifulSoup(str(rig), 'html.parser').find('span', {'class': 'vht-badge-chip rig-name nv-row'})
+                        if miner_ is None:
+                            miner_ = BeautifulSoup(str(rig), 'html.parser').find('span', {'class': 'vht-badge-chip rig-name rx-row'})
                         miner_ = miner_.get_text()
                         if miner_ == miner:
                             continue
