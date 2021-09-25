@@ -154,10 +154,10 @@ def task(driver, recipient_id, usr, pwd):
                         if int(temp) >= int(max_temp):
                             overheat.append(temp)
                     if overheat != []:
-                        miner_ = BeautifulSoup(str(rig), 'html.parser').find('span', {'class': 'vht-badge-chip rig-name nv-row'})
-                        if miner_ is None:
-                            miner_ = BeautifulSoup(str(rig), 'html.parser').find('span', {'class': 'vht-badge-chip rig-name rx-row'})
-                        miner_ = miner_.get_text()
+                        miner__ = BeautifulSoup(str(rig), 'html.parser').find('span', {'class': 'vht-badge-chip rig-name nv-row'})
+                        if miner__ is None:
+                            miner__ = BeautifulSoup(str(rig), 'html.parser').find('span', {'class': 'vht-badge-chip rig-name rx-row'})
+                        miner_ = miner__.get_text()
                         if miner_ == miner:
                             continue
                         time = get_current_time(datetime.now())
