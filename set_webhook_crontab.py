@@ -1,4 +1,4 @@
-import logging, config, json, requests, time
+import logging, config
 from viberbot import Api
 from viberbot.api.bot_configuration import BotConfiguration
 
@@ -15,14 +15,5 @@ viber = Api(BotConfiguration(
     auth_token=config.TOKEN
 ))
 
-localhost_url = "http://localhost:4040/api/tunnels"
-while True:
-    time.sleep(5)
-    try:
-        tunnel_url = requests.get(localhost_url).text
-        j = json.loads(tunnel_url)
-        webhook_url = j['tunnels'][0]['public_url']
-        viber.set_webhook(webhook_url)
-        break
-    except:
-        pass
+webhook_url = str(input('enter webhook url: '))
+viber.set_webhook(webhook_url)

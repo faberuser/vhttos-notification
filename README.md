@@ -1,7 +1,6 @@
 # vhttos-notification
 A Viber bot to notify about VHTTOS Rig status
 ###### Currently can notify when the rig down or a card of a rig go above limited temperature
-###### Check out VHTTOS Rig Notification on [Viber](www.viber.com/miningrignotification) (vietnamese only)
 
 ### Installations
 1. Install requirements from requirements.txt:
