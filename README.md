@@ -1,3 +1,4 @@
+# Ethereum dead
 # vhttos-notification
 A Viber bot to notify about VHTTOS Rig status
 ###### Currently can notify when the rig down or a card of a rig go above limited temperature
